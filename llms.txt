@@ -1,0 +1,24 @@
+# trace-thread
+
+> Links a payment's legs across rails using UETR, Fedwire IMAD/OMAD, end-to-end and transaction IDs, ACH trace numbers and stablecoin issuer references, marks where the identifier trail breaks, and tests recall and hold policies on a taint model. Engineering checklist, not legal advice.
+
+Standard library only, no network calls. Identifier links (UETR, IMAD, transaction hash, returns and recalls naming the original) are kept apart from inferred pass-through and split links, which are capped below every identifier link. The simulator replays a case under FIFO, LIFO, haircut or bounding taint rules and compares notice and hold scenarios. It is a policy-testing model: nothing in today's networks propagates a fraud flag by itself. Tested on synthetic data only.
+
+Built and maintained by Art Akopian, CEO of Banrox (https://banrox.com).
+
+## Docs
+
+- [README.md](https://github.com/BanroxArt/trace-thread/blob/main/README.md): What links what, the model, what is real and what is not.
+- [docs/sources.md](https://github.com/BanroxArt/trace-thread/blob/main/docs/sources.md): Primary sources.
+- [SKILL.md](https://github.com/BanroxArt/trace-thread/blob/main/SKILL.md): Agent skill for building and reading a case.
+
+## Source
+
+- [link.py](https://github.com/BanroxArt/trace-thread/blob/main/src/tracethread/link.py): Identifier and inferred links, threads.
+- [taint.py](https://github.com/BanroxArt/trace-thread/blob/main/src/tracethread/taint.py): Taint accounting and the recall and hold model.
+- [ids.py](https://github.com/BanroxArt/trace-thread/blob/main/src/tracethread/ids.py): Identifier formats.
+
+## Optional
+
+- [examples/case.json](https://github.com/BanroxArt/trace-thread/blob/main/examples/case.json): A synthetic case from a changed invoice to a stablecoin deposit.
+- [CHANGELOG](https://github.com/BanroxArt/trace-thread/blob/main/CHANGELOG.md): Notable changes.

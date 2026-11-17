@@ -1,0 +1,36 @@
+# Policy-testing scenarios for examples/case.json. Every number here is an
+# assumption to vary, not a description of how any bank or network behaves.
+seeds = ["L1"]
+
+[[scenario]]
+name = "manual recall, 4h per hop, stops after 2 hops"
+report = "2026-03-02T19:00:00Z"
+mode = "chain"
+hop_delay = "4h"
+max_hops = 2
+[scenario.institutions."Bank C"]
+returns = false   # an RTP receiver has no obligation to return funds
+
+[[scenario]]
+name = "manual recall, 30m per hop"
+report = "2026-03-02T19:00:00Z"
+mode = "chain"
+hop_delay = "30m"
+[scenario.institutions."Bank C"]
+returns = false
+[scenario.institutions."issuer:USDX"]
+hold_delay = "3d"   # time to get a lawful order or an issuer decision
+
+[[scenario]]
+name = "hypothetical: every receiving bank hears in 5m"
+report = "2026-03-02T19:00:00Z"
+mode = "broadcast"
+broadcast_delay = "5m"
+[scenario.institutions."issuer:USDX"]
+hold_delay = "3d"
+
+[[scenario]]
+name = "reported within the hour, 15m per hop"
+report = "2026-03-02T16:30:00Z"
+mode = "chain"
+hop_delay = "15m"

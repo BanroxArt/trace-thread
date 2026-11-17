@@ -1,0 +1,159 @@
+{
+  "legs": [
+    {
+      "id": "L1",
+      "rail": "swift",
+      "kind": "payment",
+      "ts": "2026-03-02T16:05:00Z",
+      "amount": 25000000,
+      "currency": "USD",
+      "from_party": "victim-co:operating",
+      "to_party": "corr-c:nostro",
+      "from_inst": "Bank A",
+      "to_inst": "Correspondent C",
+      "refs": {
+        "uetr": "6513270e-269e-4d37-b2a7-4de452e6b438",
+        "e2e_id": "INV-2026-0042",
+        "instr_id": "BKA-77231"
+      },
+      "note": "Victim pays a changed invoice"
+    },
+    {
+      "id": "L1F",
+      "rail": "fedwire",
+      "kind": "payment",
+      "ts": "2026-03-02T16:11:00Z",
+      "amount": 25000000,
+      "currency": "USD",
+      "from_party": "corr-c:nostro",
+      "to_party": "mule1:dda",
+      "from_inst": "Correspondent C",
+      "to_inst": "Bank B",
+      "refs": {
+        "uetr": "6513270E-269E-4D37-B2A7-4DE452E6B438",
+        "imad": "20260302QMGFT015000012",
+        "e2e_id": "INV-2026-0042"
+      }
+    },
+    {
+      "id": "L2",
+      "rail": "rtp",
+      "kind": "payment",
+      "ts": "2026-03-02T16:52:00Z",
+      "amount": 12000000,
+      "currency": "USD",
+      "from_party": "mule1:dda",
+      "to_party": "mule2:dda",
+      "from_inst": "Bank B",
+      "to_inst": "Bank C",
+      "refs": {
+        "msg_id": "RTP-MSG-0001",
+        "tx_id": "RTP-TX-0001"
+      }
+    },
+    {
+      "id": "L3",
+      "rail": "fednow",
+      "kind": "payment",
+      "ts": "2026-03-02T17:20:00Z",
+      "amount": 11500000,
+      "currency": "USD",
+      "from_party": "mule1:dda",
+      "to_party": "mule3:dda",
+      "from_inst": "Bank B",
+      "to_inst": "Bank D",
+      "refs": {
+        "msg_id": "FN-MSG-0001",
+        "e2e_id": "NOTPROVIDED"
+      }
+    },
+    {
+      "id": "L4",
+      "rail": "ach",
+      "kind": "payment",
+      "ts": "2026-03-03T14:00:00Z",
+      "amount": 11800000,
+      "currency": "USD",
+      "from_party": "mule2:dda",
+      "to_party": "exchange-x:omnibus",
+      "from_inst": "Bank C",
+      "to_inst": "Exchange X",
+      "refs": {
+        "ach_trace": "091000010000123"
+      }
+    },
+    {
+      "id": "L5",
+      "rail": "fedwire",
+      "kind": "payment",
+      "ts": "2026-03-02T18:05:00Z",
+      "amount": 11200000,
+      "currency": "USD",
+      "from_party": "mule3:dda",
+      "to_party": "issuer-s:reserve-in",
+      "from_inst": "Bank D",
+      "to_inst": "Issuer S",
+      "refs": {
+        "uetr": "d23f0824-128b-4f33-8c5c-7fd0a6a3a450",
+        "imad": "20260302QMGFT015000877",
+        "issuer_ref": "MINT-REF-0001"
+      }
+    },
+    {
+      "id": "L6",
+      "rail": "chain",
+      "kind": "mint",
+      "ts": "2026-03-02T18:40:00Z",
+      "amount": 11200000,
+      "currency": "USD",
+      "from_party": "issuer-s:reserve-in",
+      "to_party": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "from_inst": "Issuer S",
+      "to_inst": "issuer:USDX",
+      "refs": {
+        "tx_hash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+        "issuer_ref": "MINT-REF-0001"
+      },
+      "note": "Token amounts converted to cents"
+    },
+    {
+      "id": "L7",
+      "rail": "chain",
+      "kind": "transfer",
+      "ts": "2026-03-02T19:02:00Z",
+      "amount": 11190000,
+      "currency": "USD",
+      "from_party": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "to_party": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "from_inst": "issuer:USDX",
+      "to_inst": "Exchange Y",
+      "refs": {
+        "tx_hash": "0x2222222222222222222222222222222222222222222222222222222222222222"
+      }
+    },
+    {
+      "id": "R1",
+      "rail": "swift",
+      "kind": "recall_request",
+      "ts": "2026-03-02T19:30:00Z",
+      "amount": 25000000,
+      "currency": "USD",
+      "from_party": "victim-co:operating",
+      "to_party": "corr-c:nostro",
+      "from_inst": "Bank A",
+      "to_inst": "Correspondent C",
+      "refs": {
+        "orig_uetr": "6513270e-269e-4d37-b2a7-4de452e6b438",
+        "msg_id": "BKA-CAMT056-0009"
+      },
+      "note": "camt.056, reason FRAD"
+    }
+  ],
+  "aliases": [
+    {
+      "a": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "b": "exchange-y:cust-77",
+      "basis": "Exchange Y's reply to a 314(b) request (synthetic)"
+    }
+  ]
+}

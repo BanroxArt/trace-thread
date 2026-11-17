@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tracethread"
+version = "0.1.0"
+description = "Link one payment's legs across UETR, end-to-end IDs, ACH trace numbers, Fedwire IMAD/OMAD, FedNow and RTP message IDs and on-chain mint and burn, and test recall and hold policies on a taint model. Engineering checklist, not legal advice."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Art Akopian", email = "opensource@banrox.com" }]
+requires-python = ">=3.11"
+dependencies = []
+keywords = ["payments", "uetr", "iso20022", "fednow", "rtp", "ach", "fedwire", "stablecoin", "fraud", "investigation"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5", "mypy>=1.10", "hypothesis>=6.100"]
+
+[project.urls]
+Homepage = "https://banrox.com"
+Source = "https://github.com/BanroxArt/trace-thread"
+
+[project.scripts]
+tracethread = "tracethread.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tracethread = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["src"]
+strict = true
+warn_unreachable = true

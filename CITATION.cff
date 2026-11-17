@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+type: software
+title: trace-thread
+abstract: >-
+  Links one payment's legs across UETR, end-to-end IDs, ACH trace numbers,
+  Fedwire IMAD/OMAD, FedNow and RTP IDs and stablecoin mint and burn, marks
+  where the identifier trail breaks, and tests recall and hold policies on a
+  taint model. Engineering checklist, not legal advice.
+authors:
+  - family-names: Akopian
+    given-names: Art
+    affiliation: Banrox Inc.
+    email: opensource@banrox.com
+repository-code: https://github.com/BanroxArt/trace-thread
+license: MIT
+version: 0.1.0
+date-released: 2026-11-16
+keywords:
+  - payments
+  - uetr
+  - iso-20022
+  - fednow
+  - rtp
+  - fraud-investigation
+  - stablecoin
